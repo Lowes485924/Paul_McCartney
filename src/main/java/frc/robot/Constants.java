@@ -27,7 +27,7 @@ public class Constants {
 
         public static final int intakeMotorCurrentLimit = 40;
         
-        public static final double intakeSpeed = -.5;
+        public static final double intakeSpeed = -.4;
         public static final double intakeEjectSpeed = .5;
     }
 

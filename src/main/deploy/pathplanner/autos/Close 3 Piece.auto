@@ -14,7 +14,13 @@
         {
           "type": "named",
           "data": {
-            "name": "First Shot"
+            "name": "Spinup First Shot"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
           }
         },
         {
@@ -45,6 +51,18 @@
         {
           "type": "named",
           "data": {
+            "name": "loadShooter"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "SpinUp Second Shot"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
             "name": "Second Shot"
           }
         },
@@ -68,9 +86,34 @@
           }
         },
         {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Move4"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "loadShooter"
+                }
+              }
+            ]
+          }
+        },
+        {
           "type": "named",
           "data": {
-            "name": "Third Shot"
+            "name": "Spinup Third Shot"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
           }
         }
       ]

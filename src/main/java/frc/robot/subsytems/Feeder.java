@@ -18,6 +18,9 @@ public class Feeder extends SubsystemBase {
         m_Feeder.setSmartCurrentLimit(Constants.shooterConstants.feederMotorCurrentLimit);
         m_Feeder.burnFlash();
     }
+    public void feed(double power){
+        m_Feeder.set(power);
+    }
     public Command feedInCommand(){
         return this.run(() -> m_Feeder.set(Constants.shooterConstants.feedInSpeed));
     }

@@ -17,8 +17,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsytems.ClimbRight;
+import frc.robot.commands.feedInCommand;
 import frc.robot.subsytems.ClimbLeft;
 import frc.robot.subsytems.Shooter;
 import frc.robot.subsytems.Feeder;
@@ -26,6 +28,8 @@ import frc.robot.subsytems.ShooterWrist;
 import frc.robot.subsytems.IntakeWrist;
 import frc.robot.subsytems.Intake;
 import frc.robot.subsytems.Comands;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.cameraserver.CameraServer;
 
 public class RobotContainer {
   double MaxSpeed = TunerConstants.kSpeedAt12VoltsMps; // kSpeedAt12VoltsMps desired top speed
@@ -121,8 +125,11 @@ public class RobotContainer {
     NamedCommands.registerCommand("First Shot", m_commands.shootCloseCommand());
     NamedCommands.registerCommand("Second Shot", m_commands.shootCloseCommand());
     NamedCommands.registerCommand("Third Shot", m_commands.shootCloseCommand());
-    NamedCommands.registerCommand("Intake", m_commands.intakeSequence());
+    NamedCommands.registerCommand("Intake", new ParallelCommandGroup(
+      new feedInCommand(m_feeder, -.5)).withTimeout(1)
+    );
     SmartDashboard.putData("Auto Chooser", autoChooser);
+    CameraServer.startAutomaticCapture();
   }
 
   public Command getAutonomousCommand() {
