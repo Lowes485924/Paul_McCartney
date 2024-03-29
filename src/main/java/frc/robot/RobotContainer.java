@@ -125,9 +125,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("First Shot", m_commands.shootCloseCommand());
     NamedCommands.registerCommand("Second Shot", m_commands.shootCloseCommand());
     NamedCommands.registerCommand("Third Shot", m_commands.shootCloseCommand());
-    NamedCommands.registerCommand("Intake", new ParallelCommandGroup(
-      new feedInCommand(m_feeder, -.5)).withTimeout(1)
-    );
+    NamedCommands.registerCommand("Intake", new feedInCommand(m_feeder, -.5).withTimeout(1));
     SmartDashboard.putData("Auto Chooser", autoChooser);
     CameraServer.startAutomaticCapture();
   }
